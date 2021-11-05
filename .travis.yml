@@ -1,0 +1,7 @@
+os: linux
+dist: focal
+language: python
+python:
+  - "3.8"
+install:
+  - pip install flask pytest
