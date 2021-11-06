@@ -7,3 +7,10 @@ install:
   - pip install flask pytest
 script:                                                                                                                                                                                                  
   - pytest -v test.py
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  edge: true 
+  app: $HEROKU_APP_NAME
+  on:
+    branch: main
