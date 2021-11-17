@@ -5,7 +5,13 @@ python:
   - "3.8"
 install:
   - pip install flask pytest
-script:                                                                                                                                                                                                  
+addons:
+  sonarcloud:
+    organization: "fiap-8aso"
+    token:
+      secure: $SONAR_TOKEN
+script:
+  - sonar-scanner                                                                                                                                                                                    
   - pytest -v test.py
 deploy:
   provider: heroku
