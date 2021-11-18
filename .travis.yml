@@ -8,7 +8,7 @@ addons:
     organization: $SONAR_ORG_KEY
     token: ${SONAR_TOKEN}
 install:
-  - pip install flask pytest
+  - pip install flask pytest flask-wtf
 script:
   - pytest -v test.py || travis_terminate 1;
   - sonar-scanner || travis_terminate 1;
