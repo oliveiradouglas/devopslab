@@ -12,7 +12,7 @@ install:
 script:
   - coverage run -m pytest test.py || travis_terminate 1;
   - coverage xml app.py || travis_terminate 1;
-  - sonar-scanner -X || travis_terminate 1;
+  - sonar-scanner || travis_terminate 1;
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
