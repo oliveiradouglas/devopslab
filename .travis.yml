@@ -8,9 +8,10 @@ addons:
     organization: $SONAR_ORG_KEY
     token: ${SONAR_TOKEN}
 install:
-  - pip install flask pytest flask-wtf
+  - pip install flask pytest flask-wtf coverage
 script:
-  - pytest -v test.py || travis_terminate 1;
+  - coverage run -m pytest test.py || travis_terminate 1;
+  - coverage xml app.py || travis_terminate 1;
   - sonar-scanner || travis_terminate 1;
 deploy:
   provider: heroku
