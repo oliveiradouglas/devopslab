@@ -3,16 +3,15 @@ dist: focal
 language: python
 python:
   - "3.8"
-install:
-  - pip install flask pytest
 addons:
   sonarcloud:
-    organization: "fiap-8aso"
-    token:
-      secure: $SONAR_TOKEN
+    organization: $SONAR_ORG_KEY
+    token: ${SONAR_TOKEN}
+install:
+  - pip install flask pytest
 script:
-  - sonar-scanner                                                                                                                                                                                    
-  - pytest -v test.py
+  - pytest -v test.py || travis_terminate 1;
+  - sonar-scanner || travis_terminate 1;
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
